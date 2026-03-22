@@ -66,40 +66,42 @@ def simple_decoder():
     print(total)
     print(letter)
 
-value = {"e":10,"s":9,"i":8,"a":7,"r":6,"n":5,"t":4,"o":3,"l":2,"c":1}
 
-sentence = "dorqh"#input(": ")
-total = 0
-real_sentence = ''
-shift_num = 0
+def decoder_work():
+    value = {"e":1,"s":1,"i":1,"a":1,"r":1,"n":1,"t":1,"o":1,"l":1,"c":1}
 
-for letter in sentence:
-    if letter in value:
-        total += value[letter]
+    sentence = input(": ")
+    total = 0
+    real_sentence = ''
 
-for shift in range(1,95):
-    temp_sentence =''
-    num = 0
 
-    for let in sentence:
-        number = ord(let) + shift
-        if number > 126:
-            number = 33 - (127 - ord(let))
-            number += shift
-            temp_sentence += chr(number)
-        else:
-            temp_sentence += chr(number)
+    # for letter in sentence:
+    #     if letter in value:
+    #         total += value[letter]
 
-    for letter in temp_sentence:
-        if letter in value:
-            num += value[letter]
-    
+    for shift in range(0,95):
+        temp_sentence =''
+        num = 0
 
-    if num > total:
-        total = num
-        real_sentence = temp_sentence
-        shift_num = shift
-    
-print(total)
-print(shift_num)
-print(real_sentence)
+        for let in sentence:
+            number = ord(let) + shift
+            if number > 126:
+                number = 32 - (127 - ord(let))
+                number += shift
+                temp_sentence += chr(number)
+            else:
+                temp_sentence += chr(number)
+
+        for letter in temp_sentence:
+            if letter in value:
+                num += value[letter]
+        
+
+        if num > total:
+            total = num
+            real_sentence = temp_sentence
+
+    print(total)
+    print(real_sentence)
+
+decoder_work()
