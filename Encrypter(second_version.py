@@ -4,13 +4,13 @@ os.system('cls')
 ascii_code = []
 shifted_ascii =[]
 
-# Changing lettter in to ASCII code or number 
+
 sentence = input('Give an sentence: ')
 
 for letter in sentence:
     ascii_code.append(ord(letter))
 
-#shifting places
+
 shift = int(input("Give an shift number:"))
 
 for num in ascii_code:
@@ -29,6 +29,6 @@ for num in ascii_code:
         shifted_ascii.append(crypted)
         
 
-#show crypted ascii in text 
+
 for i in shifted_ascii:
     print(chr(i), end="")
