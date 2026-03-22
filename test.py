@@ -68,7 +68,8 @@ def simple_decoder():
 
 
 def decoder_work():
-    value = {"e":1,"s":1,"i":1,"a":1,"r":1,"n":1,"t":1,"o":1,"l":1,"c":1}
+    # value = {"e":1,"s":1,"i":1,"a":1,"r":1,"n":1,"t":1,"o":1,"l":1,"c":1}
+    value = {"e":1,"s":1,"i":1,"a":1,"r":1}
 
     sentence = input(": ")
     total = 0
@@ -104,4 +105,47 @@ def decoder_work():
     print(total)
     print(real_sentence)
 
-decoder_work()
+import os
+os.system('cls')
+
+common_word = "esiarntolc"
+sentence = input('Give an encrypted message: ')
+total    = 0
+real_senteece  = ''
+shifted = 0
+for shift in range(1,95):
+    temp_sentence = ''
+    num = 0
+
+    for letter in sentence:
+        number = ord(letter) + shift
+
+        if number > 126:
+            number = (32 - (127 - ord(letter))) + shift
+            temp_sentence += chr(number)
+        else:
+            temp_sentence += chr(number)
+
+    for letter in temp_sentence:
+        if letter in common_word:
+            num += 1
+        
+    if num > total:
+        total = num
+        real_senteece = temp_sentence
+        shifted = shift
+
+shift_number = ord(sentence[:1]) - ord(real_senteece[:1])
+num_shift = 0
+
+print("The top 5 most likely sentences:")
+for i in range (5):
+    top = ''
+    for letter in real_senteece:
+        a = ord(letter) + i 
+        top += chr(a)
+    print(i + 1 ,  top)
+    print('------------------------')
+
+print()
+print(f"The shift number is      : {shift_number}")
