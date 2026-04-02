@@ -32,13 +32,18 @@ shift_number = ord(sentence[:1]) - ord(real_senteece[:1])
 
 print()
 print("The top 5 most likely sentences:")
-for i in range (5):
+
+time = 3
+
+
+for i in range (5 * time):
     top = ''
     for character in real_senteece:
         a = ord(character) + i 
         top += chr(a)
     print(i + 1 ,  top)
     print('------------------------')
+
 
 print()
 print(f"The shift number is      : {shift_number}")
