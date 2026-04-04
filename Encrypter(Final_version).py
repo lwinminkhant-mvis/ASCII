@@ -16,6 +16,9 @@ shift = int(input("Give an shift number:"))
 for num in ascii_code:
     crypted = num + shift
     
+    if num == " ":
+        continue
+
     if crypted < 32:
         low_32 = (127 + (num - 32)) + shift
         shifted_ascii.append(low_32)
